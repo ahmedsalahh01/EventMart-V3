@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --radius: 0.75rem;
+
+  /* Shared palette: neutrals -> indigos -> mints -> status colors */
+  --c-1: hsl(210 20% 98%);
+  --c-2: hsl(0 0% 100%);
+  --c-3: hsl(210 15% 93%);
+  --c-4: hsl(215 20% 88%);
+  --c-5: hsl(220 12% 50%);
+  --c-6: hsl(230 35% 12%);
+  --c-7: hsl(235 30% 35%);
+  --c-8: hsl(235 45% 22%);
+  --c-9: hsl(230 50% 10%);
+  --c-10: hsl(160 45% 90%);
+  --c-11: hsl(160 60% 55%);
+  --c-12: hsl(160 55% 42%);
+  --c-13: hsl(160 50% 36%);
+  --c-14: hsl(160 55% 25%);
+  --c-15: hsl(142 72% 29%);
+  --c-16: hsl(142 76% 36%);
+  --c-17: hsl(0 63% 31%);
+  --c-18: hsl(0 72% 51%);
+}
+
+html[data-interface-theme="dark"] {
+  --c-1: hsl(230 50% 6%);
+  --c-2: hsl(230 40% 10%);
+  --c-3: hsl(230 30% 15%);
+  --c-4: hsl(230 25% 18%);
+  --c-5: hsl(215 15% 55%);
+  --c-6: hsl(210 20% 92%);
+  --c-7: hsl(235 25% 50%);
+  --c-8: hsl(235 30% 35%);
+  --c-9: hsl(230 45% 12%);
+  --c-10: hsl(160 30% 18%);
+  --c-11: hsl(160 60% 55%);
+  --c-12: hsl(160 55% 48%);
+  --c-13: hsl(160 50% 38%);
+  --c-14: hsl(160 40% 85%);
+  --c-15: hsl(152 63% 65%);
+  --c-16: hsl(152 70% 74%);
+  --c-17: hsl(0 62% 40%);
+  --c-18: hsl(0 88% 82%);
+}
+
+html[data-interface-theme="dark"] select {
+  color-scheme: dark;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--c-2) 96%, #122143) 0%,
+    color-mix(in srgb, var(--c-3) 92%, #071024) 100%
+  );
+  color: color-mix(in srgb, var(--c-14) 78%, var(--c-6));
+  border-color: color-mix(in srgb, var(--c-4) 90%, #132246);
+}
+
+html[data-interface-theme="dark"] select option,
+html[data-interface-theme="dark"] select optgroup {
+  background: color-mix(in srgb, var(--c-2) 96%, #071126);
+  color: color-mix(in srgb, var(--c-14) 78%, var(--c-6));
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--c-1);
+  color: var(--c-6);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+}
+
+.glass {
+  background: color-mix(in srgb, var(--c-2) 70%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--c-4) 50%, transparent);
+}

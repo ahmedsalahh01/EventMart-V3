@@ -1,0 +1,198 @@
+[data-theme-scope="contact"] {
+  --c-21: linear-gradient(145deg, var(--c-2) 0%, var(--c-3) 100%);
+  --c-22: var(--c-2);
+  --c-23: var(--c-4);
+  --c-24: 0 4px 24px -4px color-mix(in srgb, var(--c-9) 12%, transparent);
+  --c-25: var(--c-8);
+  --c-26: var(--c-5);
+  --c-27: var(--c-6);
+  --c-28: var(--c-12);
+  --c-29: var(--c-3);
+  --c-30: var(--c-4);
+  --c-31: var(--c-12);
+  --c-32: linear-gradient(135deg, var(--c-12) 0%, var(--c-13) 100%);
+  --c-33: var(--c-2);
+  --c-34: var(--c-8);
+}
+
+html[data-interface-theme="dark"] [data-theme-scope="contact"] {
+  --c-21: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--c-2) 96%, #071126) 0%,
+    color-mix(in srgb, var(--c-3) 88%, #071024) 100%
+  );
+  --c-22: color-mix(in srgb, var(--c-2) 96%, #081127);
+  --c-23: var(--c-4);
+  --c-24: 0 8px 32px -8px color-mix(in srgb, var(--c-1) 40%, transparent);
+  --c-25: var(--c-6);
+  --c-26: var(--c-5);
+  --c-27: var(--c-6);
+  --c-28: var(--c-12);
+  --c-29: color-mix(in srgb, var(--c-3) 90%, #071024);
+  --c-30: var(--c-4);
+  --c-31: var(--c-12);
+  --c-32: linear-gradient(135deg, var(--c-12) 0%, var(--c-13) 100%);
+  --c-33: var(--c-1);
+  --c-34: var(--c-6);
+}
+
+.contact-page {
+  width: min(var(--max-width), calc(100% - var(--page-inline)));
+  margin: 0 auto;
+  padding-top: calc(var(--nav-height) + 28px);
+  padding-bottom: 82px;
+}
+
+.contact-intro {
+  margin-bottom: 30px;
+  padding: 30px;
+  border-radius: 24px;
+  background: var(--c-12);
+  border: 1px solid color-mix(in srgb, var(--c-14) 42%, var(--c-12));
+  box-shadow: 0 10px 30px -12px color-mix(in srgb, var(--c-14) 34%, transparent);
+}
+
+.contact-intro h1 {
+  margin-bottom: 14px;
+  font-size: clamp(30px, 4.2vw, 52px);
+  line-height: 1.06;
+  color: var(--c-1);
+}
+
+.contact-intro > p:not(.contact-kicker) {
+  max-width: 68ch;
+  color: var(--c-10);
+  line-height: 1.8;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.9fr) minmax(380px, 1.3fr);
+  gap: 18px;
+}
+
+.contact-card {
+  border-radius: 22px;
+  padding: 24px;
+  background: var(--c-22);
+  border: 1px solid var(--c-23);
+  box-shadow: var(--c-24);
+}
+
+.contact-card h2 {
+  margin-bottom: 18px;
+  font-size: clamp(22px, 2.2vw, 32px);
+  color: var(--c-12);
+}
+
+.details-list {
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+
+.label {
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-14);
+}
+
+.details-list p,
+.details-list a {
+  color: color-mix(in srgb, var(--c-14) 82%, var(--c-12));
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.details-list a:hover {
+  color: var(--c-12);
+}
+
+.contact-form {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-form label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--c-14);
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--c-30);
+  background: var(--c-29);
+  color: color-mix(in srgb, var(--c-14) 76%, var(--c-12));
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--c-5);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--c-31);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-31) 24%, transparent);
+}
+
+.submit-btn {
+  margin-top: 14px;
+  width: fit-content;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: var(--c-32);
+  color: var(--c-33);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--c-24);
+  filter: brightness(1.02);
+}
+
+.form-status {
+  min-height: 24px;
+  margin-top: 10px;
+  color: var(--c-34);
+  font-size: 14px;
+}
+
+@media (max-width: 920px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .contact-page {
+    width: min(var(--max-width), calc(100% - var(--page-inline)));
+    padding-top: calc(var(--nav-height) + 20px);
+    padding-bottom: 62px;
+  }
+
+  .contact-intro,
+  .contact-card {
+    padding: 20px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+
