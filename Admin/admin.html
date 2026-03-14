@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventMart Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="admin-shell">
+
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <h1>EventMart</h1>
+        <p>Admin Panel</p>
+      </div>
+
+      <button class="side-btn active" data-section="dashboard-section">Dashboard</button>
+      <button class="side-btn" data-section="products-section">Products</button>
+      <button class="side-btn" data-section="users-section">Users</button>
+      <button class="side-btn" data-section="analytics-section">Product Analysis</button>
+    </aside>
+
+    <main class="admin-main">
+
+      <!-- DASHBOARD -->
+      <section id="dashboard-section" class="admin-section active-section">
+        <div class="section-head">
+          <div>
+            <h2>Dashboard</h2>
+            <p class="muted">Live business overview from the shared database.</p>
+          </div>
+
+          <div class="filters-row">
+            <select id="presetRange">
+              <option value="today">Today</option>
+              <option value="week">This Week</option>
+              <option value="month" selected>This Month</option>
+              <option value="year">This Year</option>
+              <option value="custom">Custom Dates</option>
+            </select>
+
+            <input type="datetime-local" id="rangeStart">
+            <input type="datetime-local" id="rangeEnd">
+            <button id="applyRangeBtn" class="btn primary" type="button">Apply</button>
+          </div>
+        </div>
+
+        <div id="dashboardCards" class="dashboard-grid"></div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section id="products-section" class="admin-section">
+        <div class="section-head">
+          <div>
+            <h2>Products</h2>
+            <p class="muted">Add, update, or delete products. Categories are free-text and dynamic.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 id="formTitle">Add Product</h3>
+
+          <form id="productForm" class="product-form">
+            <input type="hidden" id="productId">
+
+            <div class="form-grid">
+              <div class="field">
+                <label>Product ID</label>
+                <input type="text" id="product_id" required placeholder="P-00001">
+              </div>
+
+              <div class="field">
+                <label>Product Name</label>
+                <input type="text" id="name" required placeholder="Oversized Boulvard T-shirt">
+              </div>
+
+              <div class="field">
+                <label>Category</label>
+                <input type="text" id="category" required placeholder="Merchandise">
+              </div>
+
+              <div class="field">
+                <label>Subcategory</label>
+                <input type="text" id="subcategory" required placeholder="Wearables">
+              </div>
+
+              <div class="field">
+                <label>Currency Code</label>
+                <input type="text" id="currency" required placeholder="000" maxlength="3" inputmode="numeric" pattern="\d{3}" title="Use a 3-digit numeric code like 1500 (EGP) or 30 (USD)">
+              </div>
+
+              <div class="field">
+                <label>Buy Price</label>
+                <input type="number" step="0.01" id="buy_price" placeholder="350">
+              </div>
+
+              <div class="field">
+                <label>Rent Price / Day</label>
+                <input type="number" step="0.01" id="rent_price_per_day" placeholder="120">
+              </div>
+
+              <div class="field">
+                <label>Quantity Available</label>
+                <input type="number" id="quantity_available" value="0" placeholder="10">
+              </div>
+
+              <div class="field">
+                <label>Reorder Level</label>
+                <input type="number" id="reorder_level" value="0" placeholder="2">
+              </div>
+
+              <div class="field">
+                <label>Unit Cost</label>
+                <input type="number" step="0.01" id="unit_cost" value="0" placeholder="200">
+              </div>
+
+              <div class="field">
+                <label>Overhead Cost / Transportation </label>
+                <input type="number" step="0.01" id="overhead_cost" value="0" placeholder="50">
+              </div>
+
+              <div class="field field-wide">
+                <label>Image URL / Image File Name</label>
+                <input type="text" id="image_url" placeholder="Tech1.jpeg or https://...">
+              </div>
+
+              <div class="field field-wide">
+                <label>Description</label>
+                <textarea id="description" rows="4" placeholder="Professional RGB stage wash light for events, stages, and booths."></textarea>
+              </div>
+
+              <div class="field field-wide">
+                <label>Quality Points (one per line)</label>
+                <textarea id="quality_points" rows="5" placeholder="High brightness output&#10;RGB color mixing&#10;Low power consumption"></textarea>
+              </div>
+            </div>
+
+            <div class="checks-row">
+              <label><input type="checkbox" id="buy_enabled" checked> Buy Enabled</label>
+              <label><input type="checkbox" id="rent_enabled"> Rent Enabled</label>
+              <label><input type="checkbox" id="active" checked> Active</label>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary" id="saveBtn">Save Product</button>
+              <button type="button" class="btn ghost" id="resetBtn">Clear Form</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="list-head">
+            <h3>Products List</h3>
+            <input type="search" id="adminSearch" placeholder="Search products...">
+          </div>
+
+          <div id="adminProductsList" class="products-list"></div>
+        </div>
+      </section>
+
+      <!-- USERS -->
+      <section id="users-section" class="admin-section">
+        <div class="section-head">
+          <div>
+            <h2>Users</h2>
+            <p class="muted">Registered accounts from the website sign-up flow.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="list-head">
+            <h3 id="usersListTitle">Registered Users</h3>
+            <div class="filters-row">
+              <input type="search" id="usersSearch" placeholder="Search users...">
+              <button id="refreshUsersBtn" class="btn ghost" type="button">Refresh</button>
+            </div>
+          </div>
+
+          <div id="usersList" class="users-list"></div>
+        </div>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section id="analytics-section" class="admin-section">
+        <div class="section-head">
+          <div>
+            <h2>Product Analysis</h2>
+            <p class="muted">Sales, visits, add-to-cart, and profitability analysis.</p>
+          </div>
+        </div>
+
+        <div class="analysis-grid">
+          <div class="panel">
+            <h3>Most Sold Products</h3>
+            <div id="mostSoldList" class="stat-list"></div>
+          </div>
+
+          <div class="panel">
+            <h3>Most Visited Products</h3>
+            <div id="mostVisitedList" class="stat-list"></div>
+          </div>
+
+          <div class="panel">
+            <h3>Add to Cart vs Success</h3>
+            <div id="cartVsSuccessList" class="stat-list"></div>
+          </div>
+
+          <div class="panel">
+            <h3>Profitability</h3>
+            <div id="profitabilityList" class="stat-list"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
