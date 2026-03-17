@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
+
+{
   "name": "eventmart-server",
   "version": "1.0.0",
   "description": "Backend API for EventMart",
